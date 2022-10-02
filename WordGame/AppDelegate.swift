@@ -26,7 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 private extension AppDelegate {
   
   func initGameScene() {
-    let gameController = GameController()
+    let gameViewModel = GameViewModel()
+    let gameController = GameController(viewModel: gameViewModel)
     window = UIWindow(frame: UIScreen.main.bounds)
     window?.makeKeyAndVisible()
     window?.rootViewController = gameController
