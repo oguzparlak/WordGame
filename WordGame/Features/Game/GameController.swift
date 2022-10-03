@@ -8,6 +8,23 @@
 import UIKit
 
 public final class GameController: UIViewController {
+  
+  // MARK: - Views
+  
+  private lazy var buttonPairView: HorizontalButtonPairView = {
+    let buttonPairView = HorizontalButtonPairView()
+    let viewModel = HorizontalButtonPairView.ViewModel()
+    viewModel.positiveButtonText = GameResources.String.correct
+    viewModel.negativeButtonText = GameResources.String.wrong
+    viewModel.positiveButtonTapHandler = {
+      
+    }
+    viewModel.negativeButtonTapHandler = {
+      
+    }
+    buttonPairView.configure(with: viewModel)
+    return buttonPairView
+  }()
 
   // MARK: - Variables
   
@@ -17,6 +34,7 @@ public final class GameController: UIViewController {
   
   public override func viewDidLoad() {
     super.viewDidLoad()
+    initialize()
     viewModel?.setup(errorHandler: { errorMessage in
       debugPrint(errorMessage)
     })
@@ -36,7 +54,22 @@ public final class GameController: UIViewController {
   public required init?(coder: NSCoder) {
     super.init(coder: coder)
   }
-
-
+  
+  // MARK: - Methods
+  
 }
 
+// MARK: - Private
+
+private extension GameController {
+  
+  func initialize() {
+    view.backgroundColor = .white
+    view.addSubview(buttonPairView)
+    buttonPairView.snp.makeConstraints {
+      $0.leading.trailing.equalToSuperview()
+      $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-16)
+    }
+  }
+  
+}

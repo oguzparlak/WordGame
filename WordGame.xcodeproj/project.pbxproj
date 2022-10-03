@@ -25,6 +25,11 @@
 		BF64088128EA19A10008230A /* AttemptCountable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF64088028EA19A10008230A /* AttemptCountable.swift */; };
 		BF64088328EA1C450008230A /* WordPair.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF64088228EA1C450008230A /* WordPair.swift */; };
 		BF64088528EA1F5B0008230A /* WordPairGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF64088428EA1F5B0008230A /* WordPairGenerator.swift */; };
+		BFBFA07428EB8C4F00F018D8 /* HorizontalButtonPairView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBFA07328EB8C4F00F018D8 /* HorizontalButtonPairView.swift */; };
+		BFBFA07628EB8C6800F018D8 /* Configurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBFA07528EB8C6800F018D8 /* Configurable.swift */; };
+		BFBFA07928EB8DCB00F018D8 /* TypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBFA07828EB8DCB00F018D8 /* TypeAliases.swift */; };
+		BFBFA07C28EB90EB00F018D8 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = BFBFA07B28EB90EB00F018D8 /* SnapKit */; };
+		BFBFA07E28EB954000F018D8 /* GameResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBFA07D28EB954000F018D8 /* GameResources.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +72,10 @@
 		BF64088028EA19A10008230A /* AttemptCountable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttemptCountable.swift; sourceTree = "<group>"; };
 		BF64088228EA1C450008230A /* WordPair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordPair.swift; sourceTree = "<group>"; };
 		BF64088428EA1F5B0008230A /* WordPairGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordPairGenerator.swift; sourceTree = "<group>"; };
+		BFBFA07328EB8C4F00F018D8 /* HorizontalButtonPairView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalButtonPairView.swift; sourceTree = "<group>"; };
+		BFBFA07528EB8C6800F018D8 /* Configurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurable.swift; sourceTree = "<group>"; };
+		BFBFA07828EB8DCB00F018D8 /* TypeAliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeAliases.swift; sourceTree = "<group>"; };
+		BFBFA07D28EB954000F018D8 /* GameResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameResources.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFBFA07C28EB90EB00F018D8 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,6 +131,7 @@
 				BF64087328EA0E510008230A /* Assets */,
 				BF64086A28EA0D5F0008230A /* Core */,
 				BF64087428EA0E9D0008230A /* Features */,
+				BFBFA07228EB8C3600F018D8 /* UIComp */,
 			);
 			path = WordGame;
 			sourceTree = "<group>";
@@ -157,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				BF64086928EA0D4E0008230A /* FileParser */,
+				BFBFA07828EB8DCB00F018D8 /* TypeAliases.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -187,6 +199,7 @@
 				BF64087828EA0F190008230A /* Model */,
 				BF64083D28EA09930008230A /* GameController.swift */,
 				BF64087E28EA13270008230A /* GameViewModel.swift */,
+				BFBFA07D28EB954000F018D8 /* GameResources.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -210,6 +223,23 @@
 			path = Business;
 			sourceTree = "<group>";
 		};
+		BFBFA07228EB8C3600F018D8 /* UIComp */ = {
+			isa = PBXGroup;
+			children = (
+				BFBFA07528EB8C6800F018D8 /* Configurable.swift */,
+				BFBFA07728EB8C6D00F018D8 /* HorizontalButtonPairView */,
+			);
+			path = UIComp;
+			sourceTree = "<group>";
+		};
+		BFBFA07728EB8C6D00F018D8 /* HorizontalButtonPairView */ = {
+			isa = PBXGroup;
+			children = (
+				BFBFA07328EB8C4F00F018D8 /* HorizontalButtonPairView.swift */,
+			);
+			path = HorizontalButtonPairView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -226,6 +256,9 @@
 			dependencies = (
 			);
 			name = WordGame;
+			packageProductDependencies = (
+				BFBFA07B28EB90EB00F018D8 /* SnapKit */,
+			);
 			productName = WordGame;
 			productReference = BF64083628EA09930008230A /* WordGame.app */;
 			productType = "com.apple.product-type.application";
@@ -298,6 +331,9 @@
 				Base,
 			);
 			mainGroup = BF64082D28EA09930008230A;
+			packageReferences = (
+				BFBFA07A28EB90EB00F018D8 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = BF64083728EA09930008230A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -344,12 +380,16 @@
 				BF64087F28EA13270008230A /* GameViewModel.swift in Sources */,
 				BF64087028EA0D860008230A /* DecodableParser.swift in Sources */,
 				BF64087228EA0D860008230A /* FileType.swift in Sources */,
+				BFBFA07E28EB954000F018D8 /* GameResources.swift in Sources */,
+				BFBFA07928EB8DCB00F018D8 /* TypeAliases.swift in Sources */,
 				BF64088328EA1C450008230A /* WordPair.swift in Sources */,
 				BF64088128EA19A10008230A /* AttemptCountable.swift in Sources */,
 				BF64087128EA0D860008230A /* FileParser.swift in Sources */,
 				BF64083E28EA09930008230A /* GameController.swift in Sources */,
 				BF64083A28EA09930008230A /* AppDelegate.swift in Sources */,
 				BF64086F28EA0D860008230A /* FileError.swift in Sources */,
+				BFBFA07428EB8C4F00F018D8 /* HorizontalButtonPairView.swift in Sources */,
+				BFBFA07628EB8C6800F018D8 /* Configurable.swift in Sources */,
 				BF64088528EA1F5B0008230A /* WordPairGenerator.swift in Sources */,
 				BF64087D28EA11F60008230A /* GameManager.swift in Sources */,
 				BF64087A28EA0F350008230A /* Word.swift in Sources */,
@@ -527,7 +567,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -554,7 +594,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -680,6 +720,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		BFBFA07A28EB90EB00F018D8 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BFBFA07B28EB90EB00F018D8 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BFBFA07A28EB90EB00F018D8 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = BF64082E28EA09930008230A /* Project object */;
 }
