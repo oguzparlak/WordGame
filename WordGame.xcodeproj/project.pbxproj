@@ -19,9 +19,12 @@
 		BF64087128EA0D860008230A /* FileParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF64086D28EA0D860008230A /* FileParser.swift */; };
 		BF64087228EA0D860008230A /* FileType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF64086E28EA0D860008230A /* FileType.swift */; };
 		BF64087728EA0F040008230A /* words.json in Resources */ = {isa = PBXBuildFile; fileRef = BF64087628EA0F040008230A /* words.json */; };
-		BF64087A28EA0F350008230A /* WordPair.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF64087928EA0F350008230A /* WordPair.swift */; };
-		BF64087D28EA11F60008230A /* GameInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF64087C28EA11F60008230A /* GameInitializer.swift */; };
+		BF64087A28EA0F350008230A /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF64087928EA0F350008230A /* Word.swift */; };
+		BF64087D28EA11F60008230A /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF64087C28EA11F60008230A /* GameManager.swift */; };
 		BF64087F28EA13270008230A /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF64087E28EA13270008230A /* GameViewModel.swift */; };
+		BF64088128EA19A10008230A /* AttemptCountable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF64088028EA19A10008230A /* AttemptCountable.swift */; };
+		BF64088328EA1C450008230A /* WordPair.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF64088228EA1C450008230A /* WordPair.swift */; };
+		BF64088528EA1F5B0008230A /* WordPairGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF64088428EA1F5B0008230A /* WordPairGenerator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,9 +61,12 @@
 		BF64086D28EA0D860008230A /* FileParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileParser.swift; sourceTree = "<group>"; };
 		BF64086E28EA0D860008230A /* FileType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileType.swift; sourceTree = "<group>"; };
 		BF64087628EA0F040008230A /* words.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = words.json; sourceTree = "<group>"; };
-		BF64087928EA0F350008230A /* WordPair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordPair.swift; sourceTree = "<group>"; };
-		BF64087C28EA11F60008230A /* GameInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameInitializer.swift; sourceTree = "<group>"; };
+		BF64087928EA0F350008230A /* Word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
+		BF64087C28EA11F60008230A /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 		BF64087E28EA13270008230A /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
+		BF64088028EA19A10008230A /* AttemptCountable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttemptCountable.swift; sourceTree = "<group>"; };
+		BF64088228EA1C450008230A /* WordPair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordPair.swift; sourceTree = "<group>"; };
+		BF64088428EA1F5B0008230A /* WordPairGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordPairGenerator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,7 +194,8 @@
 		BF64087828EA0F190008230A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				BF64087928EA0F350008230A /* WordPair.swift */,
+				BF64087928EA0F350008230A /* Word.swift */,
+				BF64088228EA1C450008230A /* WordPair.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -196,7 +203,9 @@
 		BF64087B28EA11E20008230A /* Business */ = {
 			isa = PBXGroup;
 			children = (
-				BF64087C28EA11F60008230A /* GameInitializer.swift */,
+				BF64087C28EA11F60008230A /* GameManager.swift */,
+				BF64088028EA19A10008230A /* AttemptCountable.swift */,
+				BF64088428EA1F5B0008230A /* WordPairGenerator.swift */,
 			);
 			path = Business;
 			sourceTree = "<group>";
@@ -335,12 +344,15 @@
 				BF64087F28EA13270008230A /* GameViewModel.swift in Sources */,
 				BF64087028EA0D860008230A /* DecodableParser.swift in Sources */,
 				BF64087228EA0D860008230A /* FileType.swift in Sources */,
+				BF64088328EA1C450008230A /* WordPair.swift in Sources */,
+				BF64088128EA19A10008230A /* AttemptCountable.swift in Sources */,
 				BF64087128EA0D860008230A /* FileParser.swift in Sources */,
 				BF64083E28EA09930008230A /* GameController.swift in Sources */,
 				BF64083A28EA09930008230A /* AppDelegate.swift in Sources */,
 				BF64086F28EA0D860008230A /* FileError.swift in Sources */,
-				BF64087D28EA11F60008230A /* GameInitializer.swift in Sources */,
-				BF64087A28EA0F350008230A /* WordPair.swift in Sources */,
+				BF64088528EA1F5B0008230A /* WordPairGenerator.swift in Sources */,
+				BF64087D28EA11F60008230A /* GameManager.swift in Sources */,
+				BF64087A28EA0F350008230A /* Word.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,11 +15,11 @@ public final class GameViewModel: GameViewModelProtocol {
   
   // MARK: - Variables
   
-  private let gameManager: GameManagerProtocol
+  private let gameManager: GameManager
   
   // MARK: - Init
   
-  public init(gameManager: GameManagerProtocol = GameManager()) {
+  public init(gameManager: GameManager = GameManager(config: .default)) {
     self.gameManager = gameManager
   }
   
