@@ -7,12 +7,8 @@
 
 import Foundation
 
-public struct WordPair: Decodable {
-  public let englishTranslation: String
+public struct WordPair {
+  public let originalWord: String
   public let spanishTranslation: String
-  
-  enum CodingKeys: String, CodingKey {
-    case englishTranslation = "text_eng"
-    case spanishTranslation = "text_spa"
-  }
+  public let isCorrectTranslation: Bool
 }
