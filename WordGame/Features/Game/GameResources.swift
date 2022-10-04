@@ -12,6 +12,8 @@ public struct GameResources {
   public enum String {
     public static let correct = "Correct"
     public static let wrong = "Wrong"
+    public static let correctAttemptText = "Correct Attempts"
+    public static let wrongAttemptText = "Wrong Attempts"
   }
   
 }

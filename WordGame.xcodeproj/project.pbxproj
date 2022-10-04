@@ -30,6 +30,7 @@
 		BFBFA07928EB8DCB00F018D8 /* TypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBFA07828EB8DCB00F018D8 /* TypeAliases.swift */; };
 		BFBFA07C28EB90EB00F018D8 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = BFBFA07B28EB90EB00F018D8 /* SnapKit */; };
 		BFBFA07E28EB954000F018D8 /* GameResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBFA07D28EB954000F018D8 /* GameResources.swift */; };
+		BFC2F5F428EC199A0047E66B /* AttemptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC2F5F328EC199A0047E66B /* AttemptView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,7 @@
 		BFBFA07528EB8C6800F018D8 /* Configurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurable.swift; sourceTree = "<group>"; };
 		BFBFA07828EB8DCB00F018D8 /* TypeAliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeAliases.swift; sourceTree = "<group>"; };
 		BFBFA07D28EB954000F018D8 /* GameResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameResources.swift; sourceTree = "<group>"; };
+		BFC2F5F328EC199A0047E66B /* AttemptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttemptView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -227,6 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				BFBFA07528EB8C6800F018D8 /* Configurable.swift */,
+				BFC2F5F228EC197B0047E66B /* AttemptView */,
 				BFBFA07728EB8C6D00F018D8 /* HorizontalButtonPairView */,
 			);
 			path = UIComp;
@@ -238,6 +241,14 @@
 				BFBFA07328EB8C4F00F018D8 /* HorizontalButtonPairView.swift */,
 			);
 			path = HorizontalButtonPairView;
+			sourceTree = "<group>";
+		};
+		BFC2F5F228EC197B0047E66B /* AttemptView */ = {
+			isa = PBXGroup;
+			children = (
+				BFC2F5F328EC199A0047E66B /* AttemptView.swift */,
+			);
+			path = AttemptView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -385,6 +396,7 @@
 				BF64088328EA1C450008230A /* WordPair.swift in Sources */,
 				BF64088128EA19A10008230A /* AttemptCountable.swift in Sources */,
 				BF64087128EA0D860008230A /* FileParser.swift in Sources */,
+				BFC2F5F428EC199A0047E66B /* AttemptView.swift in Sources */,
 				BF64083E28EA09930008230A /* GameController.swift in Sources */,
 				BF64083A28EA09930008230A /* AppDelegate.swift in Sources */,
 				BF64086F28EA0D860008230A /* FileError.swift in Sources */,
