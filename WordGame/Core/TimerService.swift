@@ -45,7 +45,7 @@ public final class TimerService: TimerServiceProtocol {
       repeats: true,
       block: { [weak self] timer in
         guard let self = self else { return }
-        if self.remainingSeconds > 0 {
+        if self.remainingSeconds - 1 > 0 {
           self.remainingSeconds -= 1
         } else {
           self.endHandler?()
