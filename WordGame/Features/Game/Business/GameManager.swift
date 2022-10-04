@@ -50,7 +50,6 @@ public final class GameManager: AttemptCountable {
     case .success(let words):
       self.wordPairGenerator.setDataSource(words)
       self.wordPairs = wordPairGenerator.generate()
-      debugPrint(self.wordPairs)
     case .failure(let error):
       throw error
     }

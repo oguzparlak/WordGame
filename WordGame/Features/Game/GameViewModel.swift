@@ -13,6 +13,7 @@ public protocol GameViewModelProtocol {
   func setup(errorHandler: ((String) -> Void)?)
   func start()
   func didSelectAttempt(isCorrect: Bool)
+  func nextOnTimerEnd()
 }
 
 public final class GameViewModel: GameViewModelProtocol {
@@ -52,8 +53,7 @@ public final class GameViewModel: GameViewModelProtocol {
   
   public func start() {
     gameManager.observeSeconds(didEndHandler: { [weak self] in
-      self?.gameManager.onAttempt(isCorrect: false)
-      self?.next()
+      self?.gameState = .timeIsUp
     })
     gameManager.reset()
     finishRound()
@@ -62,6 +62,11 @@ public final class GameViewModel: GameViewModelProtocol {
   
   public func didSelectAttempt(isCorrect: Bool) {
     pickAttempt(isCorrect: isCorrect)
+    next()
+  }
+  
+  public func nextOnTimerEnd() {
+    gameManager.onAttempt(isCorrect: false)
     next()
   }
 }
@@ -99,10 +104,12 @@ private extension GameViewModel {
   }
   
   func finishRound() {
-    gameState = .roundFinished(
-      correctAttemptCount: gameManager.correctAttemps,
-      wrongAttemptCount: gameManager.incorrectAttempts
-    )
+    let viewModel = AttemptView.ViewModel()
+    viewModel.correctAttemptCount = gameManager.correctAttemps
+    viewModel.incorrectAttemptCount = gameManager.incorrectAttempts
+    viewModel.correctAttemptText = GameResources.String.correctAttemptText
+    viewModel.incorrectAttemptText = GameResources.String.wrongAttemptText
+    gameState = .roundFinished(attemptViewModel: viewModel)
   }
   
   func checkGameEnded() {

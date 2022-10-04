@@ -24,18 +24,20 @@ public final class HorizontalButtonPairView: UIView, Configurable {
   private lazy var positiveButton: UIButton = {
     let button = UIButton(type: .roundedRect)
     button.setTitleColor(.white, for: .normal)
-    button.backgroundColor = .systemGreen
     button.layer.cornerRadius = 8
     return button
   }()
   
   private lazy var negativeButton: UIButton = {
     let button = UIButton(type: .roundedRect)
-    button.backgroundColor = .systemRed
     button.setTitleColor(.white, for: .normal)
     button.layer.cornerRadius = 8
     return button
   }()
+  
+  // MARK: - Variables
+  
+  private lazy var viewModel = ViewModel()
   
   // MARK: - ViewModel
   
@@ -44,6 +46,7 @@ public final class HorizontalButtonPairView: UIView, Configurable {
     public var negativeButtonText: String = ""
     public var positiveButtonTapHandler: VoidHandler?
     public var negativeButtonTapHandler: VoidHandler?
+    public var isEnabled: Bool = true
   }
   
   // MARK: - Init
@@ -60,14 +63,34 @@ public final class HorizontalButtonPairView: UIView, Configurable {
   // MARK: - Methods
   
   public func configure(with viewModel: ViewModel) {
+    self.viewModel = viewModel
     positiveButton.setTitle(viewModel.positiveButtonText, for: .normal)
     negativeButton.setTitle(viewModel.negativeButtonText, for: .normal)
-    positiveButton.addAction(UIAction(handler: { _ in
-      viewModel.positiveButtonTapHandler?()
-    }), for: .touchUpInside)
-    negativeButton.addAction(UIAction(handler: { _ in
-      viewModel.negativeButtonTapHandler?()
-    }), for: .touchUpInside)
+    positiveButton.addTarget(
+      self,
+      action: #selector(positiveButtonTapped),
+      for: .touchUpInside
+    )
+    negativeButton.addTarget(
+      self,
+      action: #selector(negativeButtonTapped),
+      for: .touchUpInside
+    )
+    [positiveButton, negativeButton].forEach {
+      $0.isEnabled = viewModel.isEnabled
+    }
+    positiveButton.backgroundColor = viewModel.isEnabled ? .systemGreen : .lightGray
+    negativeButton.backgroundColor = viewModel.isEnabled ? .systemRed : .lightGray
+  }
+  
+  @objc
+  func positiveButtonTapped() {
+    viewModel.positiveButtonTapHandler?()
+  }
+  
+  @objc
+  func negativeButtonTapped() {
+    viewModel.negativeButtonTapHandler?()
   }
 }
 

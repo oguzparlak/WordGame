@@ -11,18 +11,22 @@ public final class GameController: UIViewController, RestartDisplayable {
   
   // MARK: - Views
   
-  private lazy var buttonPairView: HorizontalButtonPairView = {
-    let buttonPairView = HorizontalButtonPairView()
+  private lazy var buttonPairViewModel: HorizontalButtonPairView.ViewModel = {
     let viewModel = HorizontalButtonPairView.ViewModel()
     viewModel.positiveButtonText = GameResources.String.correct
     viewModel.negativeButtonText = GameResources.String.wrong
     viewModel.positiveButtonTapHandler = { [weak self] in
-      self?.viewModel?.didSelectAttempt(isCorrect: true)
+      self?.onAttempt(isCorrect: true)
     }
     viewModel.negativeButtonTapHandler = { [weak self] in
-      self?.viewModel?.didSelectAttempt(isCorrect: false)
+      self?.onAttempt(isCorrect: false)
     }
-    buttonPairView.configure(with: viewModel)
+    return viewModel
+  }()
+  
+  private lazy var buttonPairView: HorizontalButtonPairView = {
+    let buttonPairView = HorizontalButtonPairView()
+    buttonPairView.configure(with: buttonPairViewModel)
     return buttonPairView
   }()
   
@@ -39,21 +43,11 @@ public final class GameController: UIViewController, RestartDisplayable {
   public override func viewDidLoad() {
     super.viewDidLoad()
     initialize()
-    configureAttemptView()
     bindGameState()
     start()
   }
   
   // MARK: - Methods
-  
-  private func configureAttemptView(correctCount: Int = .zero, incorrectCount: Int = .zero) {
-    let viewModel = AttemptView.ViewModel()
-    viewModel.correctAttemptCount = correctCount
-    viewModel.incorrectAttemptCount = incorrectCount
-    viewModel.correctAttemptText = GameResources.String.correctAttemptText
-    viewModel.incorrectAttemptText = GameResources.String.wrongAttemptText
-    attemptView.configure(with: viewModel)
-  }
   
   private func bindGameState() {
     viewModel?.gameStateChangeHandler = { [weak self] state in
@@ -69,11 +63,10 @@ public final class GameController: UIViewController, RestartDisplayable {
         }, onExit: {
           exit(.zero)
         })
-      case .roundFinished(let correctAttemptCount, let wrongAttemptCount):
-        self.configureAttemptView(
-          correctCount: correctAttemptCount,
-          incorrectCount: wrongAttemptCount
-        )
+      case .roundFinished(let viewModel):
+        self.attemptView.configure(with: viewModel)
+      case .timeIsUp:
+        self.onAttempt(isCorrect: false, skip: true)
       }
     }
   }
@@ -126,4 +119,46 @@ private extension GameController {
       $0.centerX.centerY.equalToSuperview()
     }
   }
+  
+  func layoutWordPair(position: WordPairPosition = .middle) {
+    wordPairView.snp.updateConstraints {
+      let frameHeight = view.frame.height
+      let wordPairHeight = wordPairView.frame.height
+      let offset: CGFloat = position == .middle ? .zero : frameHeight + wordPairHeight
+      $0.centerX.equalToSuperview()
+      $0.centerY.equalToSuperview().offset(offset)
+    }
+  }
+  
+  func onAttempt(isCorrect: Bool, skip: Bool = false) {
+    buttonPairViewModel.isEnabled = false
+    animate(animation: { [weak self] in
+      self?.layoutWordPair(position: .bottom)
+    }, completion: { [weak self] in
+      if skip {
+        self?.viewModel?.nextOnTimerEnd()
+      } else {
+        self?.viewModel?.didSelectAttempt(isCorrect: isCorrect)
+      }
+      self?.animate(animation: {
+        guard let self = self else { return }
+        self.layoutWordPair(position: .middle)
+        self.buttonPairViewModel.isEnabled = true
+        self.buttonPairView.configure(with: self.buttonPairViewModel)
+      })
+    })
+    buttonPairView.configure(with: buttonPairViewModel)
+  }
+  
+}
+
+// MARK: - Animation
+
+public extension GameController {
+  
+  enum WordPairPosition {
+    case middle
+    case bottom
+  }
+  
 }

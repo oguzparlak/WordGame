@@ -35,6 +35,7 @@
 		BFC2F5F928EC34EA0047E66B /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC2F5F828EC34EA0047E66B /* GameState.swift */; };
 		BFC2F5FC28EC43FC0047E66B /* RestartDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC2F5FB28EC43FC0047E66B /* RestartDisplayable.swift */; };
 		BFC2F5FE28EC4E790047E66B /* TimerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC2F5FD28EC4E790047E66B /* TimerService.swift */; };
+		BFC2F60228EC73B10047E66B /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC2F60128EC73B10047E66B /* UIViewController+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +87,7 @@
 		BFC2F5F828EC34EA0047E66B /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
 		BFC2F5FB28EC43FC0047E66B /* RestartDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestartDisplayable.swift; sourceTree = "<group>"; };
 		BFC2F5FD28EC4E790047E66B /* TimerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerService.swift; sourceTree = "<group>"; };
+		BFC2F60128EC73B10047E66B /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 		BF64083828EA09930008230A /* WordGame */ = {
 			isa = PBXGroup;
 			children = (
+				BFC2F5FF28EC73A00047E66B /* Extensions */,
 				BF64083928EA09930008230A /* AppDelegate.swift */,
 				BF64087328EA0E510008230A /* Assets */,
 				BF64086A28EA0D5F0008230A /* Core */,
@@ -277,6 +280,22 @@
 				BFBFA07D28EB954000F018D8 /* GameResources.swift */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		BFC2F5FF28EC73A00047E66B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				BFC2F60028EC73A70047E66B /* UI */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		BFC2F60028EC73A70047E66B /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				BFC2F60128EC73B10047E66B /* UIViewController+Extensions.swift */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -422,6 +441,7 @@
 				BF64087228EA0D860008230A /* FileType.swift in Sources */,
 				BFBFA07E28EB954000F018D8 /* GameResources.swift in Sources */,
 				BFBFA07928EB8DCB00F018D8 /* TypeAliases.swift in Sources */,
+				BFC2F60228EC73B10047E66B /* UIViewController+Extensions.swift in Sources */,
 				BF64088328EA1C450008230A /* WordPair.swift in Sources */,
 				BF64088128EA19A10008230A /* AttemptCountable.swift in Sources */,
 				BFC2F5F928EC34EA0047E66B /* GameState.swift in Sources */,
@@ -611,7 +631,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -638,7 +658,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
