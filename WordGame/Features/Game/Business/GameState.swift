@@ -10,6 +10,7 @@ import Foundation
 public enum GameState {
   case initial
   case next(wordPairViewModel: WordPairView.ViewModel)
-  case roundFinished(correctAttemptCount: Int, wrongAttemptCount: Int)
+  case roundFinished(attemptViewModel: AttemptView.ViewModel)
   case gameFinished
+  case timeIsUp
 }
