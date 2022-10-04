@@ -27,6 +27,8 @@ public final class GameController: UIViewController {
   }()
   
   private lazy var attemptView = AttemptView()
+  
+  private lazy var wordPairView = WordPairView()
 
   // MARK: - Variables
   
@@ -78,6 +80,7 @@ private extension GameController {
     view.backgroundColor = .white
     view.addSubview(buttonPairView)
     view.addSubview(attemptView)
+    view.addSubview(wordPairView)
     makeConstraints()
   }
   
@@ -89,6 +92,9 @@ private extension GameController {
     attemptView.snp.makeConstraints {
       $0.top.equalTo(view.safeAreaLayoutGuide).offset(16)
       $0.trailing.equalToSuperview().offset(-16)
+    }
+    wordPairView.snp.makeConstraints {
+      $0.centerX.centerY.equalToSuperview()
     }
   }
   

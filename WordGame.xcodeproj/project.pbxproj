@@ -31,6 +31,7 @@
 		BFBFA07C28EB90EB00F018D8 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = BFBFA07B28EB90EB00F018D8 /* SnapKit */; };
 		BFBFA07E28EB954000F018D8 /* GameResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBFA07D28EB954000F018D8 /* GameResources.swift */; };
 		BFC2F5F428EC199A0047E66B /* AttemptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC2F5F328EC199A0047E66B /* AttemptView.swift */; };
+		BFC2F5F728EC20D40047E66B /* WordPairView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC2F5F628EC20D40047E66B /* WordPairView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,7 @@
 		BFBFA07828EB8DCB00F018D8 /* TypeAliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeAliases.swift; sourceTree = "<group>"; };
 		BFBFA07D28EB954000F018D8 /* GameResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameResources.swift; sourceTree = "<group>"; };
 		BFC2F5F328EC199A0047E66B /* AttemptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttemptView.swift; sourceTree = "<group>"; };
+		BFC2F5F628EC20D40047E66B /* WordPairView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordPairView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,6 +233,7 @@
 				BFBFA07528EB8C6800F018D8 /* Configurable.swift */,
 				BFC2F5F228EC197B0047E66B /* AttemptView */,
 				BFBFA07728EB8C6D00F018D8 /* HorizontalButtonPairView */,
+				BFC2F5F528EC20BC0047E66B /* WordPairView */,
 			);
 			path = UIComp;
 			sourceTree = "<group>";
@@ -249,6 +252,14 @@
 				BFC2F5F328EC199A0047E66B /* AttemptView.swift */,
 			);
 			path = AttemptView;
+			sourceTree = "<group>";
+		};
+		BFC2F5F528EC20BC0047E66B /* WordPairView */ = {
+			isa = PBXGroup;
+			children = (
+				BFC2F5F628EC20D40047E66B /* WordPairView.swift */,
+			);
+			path = WordPairView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -398,6 +409,7 @@
 				BF64087128EA0D860008230A /* FileParser.swift in Sources */,
 				BFC2F5F428EC199A0047E66B /* AttemptView.swift in Sources */,
 				BF64083E28EA09930008230A /* GameController.swift in Sources */,
+				BFC2F5F728EC20D40047E66B /* WordPairView.swift in Sources */,
 				BF64083A28EA09930008230A /* AppDelegate.swift in Sources */,
 				BF64086F28EA0D860008230A /* FileError.swift in Sources */,
 				BFBFA07428EB8C4F00F018D8 /* HorizontalButtonPairView.swift in Sources */,
