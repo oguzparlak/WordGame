@@ -16,13 +16,17 @@ public final class GameManager: AttemptCountable {
   
   // MARK: - Variables
   
-  private var wordPairs: [WordPair] = []
+  public var wordPairs: [WordPair] = []
   
   // MARK: - Injected Variables
   
   /// Represents the game configuration
   private let config: Config
+  
+  /// Responsible for generating word pairs with applied config
   private let wordPairGenerator: WordPairGenerator
+  
+  /// Responsible for parsing the json file to provide data for the game
   private let fileParser: DecodableParser<[Word]>
   
   // MARK: - Init
@@ -49,6 +53,24 @@ public final class GameManager: AttemptCountable {
     }
   }
   
+  public func onAttempt(isCorrect: Bool) {
+    if isCorrect {
+      incrementCorrectAttempts()
+    } else {
+      incrementWrongAttempts()
+    }
+  }
+  
+  public func isGameEnded() -> Bool {
+    let reachedMaxWrongAttempts = incorrectAttempts == config.maxWrongAttemptCount
+    return wordPairs.isEmpty || reachedMaxWrongAttempts
+  }
+  
+  public func reset() {
+    correctAttemps = .zero
+    incorrectAttempts = .zero
+  }
+  
 }
 
 // MARK: - Config
@@ -57,19 +79,39 @@ public extension GameManager {
   
   struct Config {
     
-    /// Represents the maximum amount of pairs to be displayed
+    /// Represents the maximum amount of pairs to be displayed.
+    /// The default value is 15
     public let maxWordPairs: Int
     
-    /// Represents correct pair generation ratio. The default value is 0.25
+    /// Represents correct pair generation ratio.
+    /// The default value is 0.25
     public let correctPairGenerationPercentage: Double
     
-    init(maxWordPairs: Int, correctPairGenerationPercentage: Double) {
+    /// Maximum wrong attempt count for a game round.
+    /// The default value is 3
+    public let maxWrongAttemptCount: Int
+    
+    /// Amount in seconds that let user play a game round for a specific amount of time.
+    /// The default value is 5
+    public let secondsForRound: Int
+    
+    init(maxWordPairs: Int,
+         correctPairGenerationPercentage: Double,
+         maxWrongAttemptCount: Int,
+         secondsForRound: Int) {
       self.maxWordPairs = maxWordPairs
       self.correctPairGenerationPercentage = correctPairGenerationPercentage
+      self.maxWrongAttemptCount = maxWrongAttemptCount
+      self.secondsForRound = secondsForRound
     }
     
     public static var `default`: Config {
-      return .init(maxWordPairs: 3, correctPairGenerationPercentage: 0.25)
+      return .init(
+        maxWordPairs: 15,
+        correctPairGenerationPercentage: 0.25,
+        maxWrongAttemptCount: 3,
+        secondsForRound: 5
+      )
     }
   }
 }
