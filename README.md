@@ -5,16 +5,17 @@
 [![Platform](https://img.shields.io/badge/iOS-13-green.svg)](https://developer.apple.com/ios/)
 
 # Time Invested
-I've spend 4 hours plus 30 mins for README and Unit Test Cases. I've logged my time while working (Like a freelancer working mechanism)
+I've spend 8 hours plus 30 mins for README and Unit Test Cases. I've logged my time while working (Like a freelancer working mechanism)
 
 # Time Distribution
 The architecture and applying game logics took almost %50 of my time.
 The rest is creating UI components and writing test cases.
 
 ## Distribution
-- UI Components -> 1 hour
-- File Parsing, Word Pair generation, game state and game flow -> 2 hours
-- Refactoring, Unit Testing, preparing README -> 1 hour
+- UI Components -> 2 hour
+- File Parsing, Word Pair generation, game state and game flow -> 4 hours
+- Refactoring -> 1 hour
+- Unit Testing, preparing README -> 1 hour
 
 # Decisions made because of restricted time
 - I created the structures and modules dependency free as much as I can. 
@@ -24,6 +25,7 @@ The rest is creating UI components and writing test cases.
 # What would have been improved
 - If there was extra time, I would have write more test cases. I couldn't achieve the full coverage.
 - I could have documented codebase very well if I have more time.
+- The label animation could have been improved.
 
 # 3rd Party
 I've used SnapKit to generate constraints slightly faster than traditional way.
