@@ -16,13 +16,13 @@ public extension RestartDisplayable where Self: UIViewController {
   
   func displayRestartAlert(onRestart: VoidHandler?, onExit: VoidHandler?) {
     let alertController = UIAlertController(
-      title: "Game Ended",
-      message: "Would you like to restart?",
+      title: GameResources.String.gameEndTitle,
+      message: GameResources.String.restartPrompt,
       preferredStyle: .alert
     )
     alertController.addAction(
       UIAlertAction(
-        title: "Restart",
+        title: GameResources.String.restart,
         style: .default,
         handler: { _ in
           onRestart?()
@@ -31,7 +31,7 @@ public extension RestartDisplayable where Self: UIViewController {
     )
     alertController.addAction(
       UIAlertAction(
-        title: "Exit",
+        title: GameResources.String.exit,
         style: .destructive,
         handler: { _ in
           onExit?()
@@ -40,5 +40,4 @@ public extension RestartDisplayable where Self: UIViewController {
     )
     present(alertController, animated: true)
   }
-  
 }

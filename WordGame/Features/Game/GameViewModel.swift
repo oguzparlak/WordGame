@@ -51,16 +51,18 @@ public final class GameViewModel: GameViewModelProtocol {
   }
   
   public func start() {
+    gameManager.observeSeconds(didEndHandler: { [weak self] in
+      self?.gameManager.onAttempt(isCorrect: false)
+      self?.next()
+    })
     gameManager.reset()
     finishRound()
-    next()
+    displayCurrent()
   }
   
   public func didSelectAttempt(isCorrect: Bool) {
     pickAttempt(isCorrect: isCorrect)
-    skip()
     next()
-    checkGameEnded()
   }
 }
 
@@ -69,6 +71,14 @@ public final class GameViewModel: GameViewModelProtocol {
 private extension GameViewModel {
   
   func next() {
+    skip()
+    displayCurrent()
+    gameManager.resetTimer()
+    finishRound()
+    checkGameEnded()
+  }
+  
+  func displayCurrent() {
     guard let currentPair = currentlyDisplayedPair else { return }
     let viewModel = WordPairView.ViewModel()
     viewModel.originalText = currentPair.originalWord
@@ -97,7 +107,8 @@ private extension GameViewModel {
   
   func checkGameEnded() {
     let gameEnded = gameManager.isGameEnded()
-    if gameEnded { gameState = .gameFinished }
+    guard gameEnded else { return }
+    gameState = .gameFinished
+    gameManager.stopTimer()
   }
-  
 }

@@ -34,6 +34,7 @@
 		BFC2F5F728EC20D40047E66B /* WordPairView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC2F5F628EC20D40047E66B /* WordPairView.swift */; };
 		BFC2F5F928EC34EA0047E66B /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC2F5F828EC34EA0047E66B /* GameState.swift */; };
 		BFC2F5FC28EC43FC0047E66B /* RestartDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC2F5FB28EC43FC0047E66B /* RestartDisplayable.swift */; };
+		BFC2F5FE28EC4E790047E66B /* TimerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC2F5FD28EC4E790047E66B /* TimerService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +85,7 @@
 		BFC2F5F628EC20D40047E66B /* WordPairView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordPairView.swift; sourceTree = "<group>"; };
 		BFC2F5F828EC34EA0047E66B /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
 		BFC2F5FB28EC43FC0047E66B /* RestartDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestartDisplayable.swift; sourceTree = "<group>"; };
+		BFC2F5FD28EC4E790047E66B /* TimerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +180,7 @@
 				BF64086928EA0D4E0008230A /* FileParser */,
 				BFC2F5FB28EC43FC0047E66B /* RestartDisplayable.swift */,
 				BFBFA07828EB8DCB00F018D8 /* TypeAliases.swift */,
+				BFC2F5FD28EC4E790047E66B /* TimerService.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -431,6 +434,7 @@
 				BFBFA07428EB8C4F00F018D8 /* HorizontalButtonPairView.swift in Sources */,
 				BFBFA07628EB8C6800F018D8 /* Configurable.swift in Sources */,
 				BF64088528EA1F5B0008230A /* WordPairGenerator.swift in Sources */,
+				BFC2F5FE28EC4E790047E66B /* TimerService.swift in Sources */,
 				BF64087D28EA11F60008230A /* GameManager.swift in Sources */,
 				BF64087A28EA0F350008230A /* Word.swift in Sources */,
 			);

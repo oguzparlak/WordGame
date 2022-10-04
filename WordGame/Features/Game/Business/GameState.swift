@@ -12,5 +12,4 @@ public enum GameState {
   case next(wordPairViewModel: WordPairView.ViewModel)
   case roundFinished(correctAttemptCount: Int, wrongAttemptCount: Int)
   case gameFinished
-  case restart
 }

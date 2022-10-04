@@ -18,13 +18,18 @@ public final class GameManager: AttemptCountable {
   
   public var wordPairs: [WordPair] = []
   
+  /// Responsible for generating word pairs with applied config
+  private lazy var wordPairGenerator: WordPairGenerator = .init(config: config)
+  
+  /// Manages the time related business
+  private lazy var timerService: TimerServiceProtocol = TimerService(
+    targetSeconds: config.secondsForRound
+  )
+  
   // MARK: - Injected Variables
   
   /// Represents the game configuration
   private let config: Config
-  
-  /// Responsible for generating word pairs with applied config
-  private let wordPairGenerator: WordPairGenerator
   
   /// Responsible for parsing the json file to provide data for the game
   private let fileParser: DecodableParser<[Word]>
@@ -32,10 +37,8 @@ public final class GameManager: AttemptCountable {
   // MARK: - Init
   
   public init(config: Config,
-              wordPairGenerator: WordPairGenerator = .init(),
               fileParser: DecodableParser<[Word]> = .init(path: "words", fileType: .json)) {
     self.config = config
-    self.wordPairGenerator = wordPairGenerator
     self.fileParser = fileParser
   }
   
@@ -51,6 +54,10 @@ public final class GameManager: AttemptCountable {
     case .failure(let error):
       throw error
     }
+  }
+  
+  public func observeSeconds(didEndHandler: VoidHandler?) {
+    timerService.endHandler = didEndHandler
   }
   
   public func onAttempt(isCorrect: Bool) {
@@ -69,6 +76,15 @@ public final class GameManager: AttemptCountable {
   public func reset() {
     correctAttemps = .zero
     incorrectAttempts = .zero
+    resetTimer()
+  }
+  
+  public func resetTimer() {
+    timerService.reset()
+  }
+  
+  public func stopTimer() {
+    timerService.stop()
   }
   
 }

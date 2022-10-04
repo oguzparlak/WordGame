@@ -69,8 +69,6 @@ public final class GameController: UIViewController, RestartDisplayable {
         }, onExit: {
           exit(.zero)
         })
-      case .restart:
-        break
       case .roundFinished(let correctAttemptCount, let wrongAttemptCount):
         self.configureAttemptView(
           correctCount: correctAttemptCount,
@@ -128,5 +126,4 @@ private extension GameController {
       $0.centerX.centerY.equalToSuperview()
     }
   }
-  
 }
