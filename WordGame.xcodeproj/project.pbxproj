@@ -11,7 +11,6 @@
 		BF64083E28EA09930008230A /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF64083D28EA09930008230A /* GameController.swift */; };
 		BF64084328EA09960008230A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF64084228EA09960008230A /* Assets.xcassets */; };
 		BF64084628EA09960008230A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF64084428EA09960008230A /* LaunchScreen.storyboard */; };
-		BF64085128EA09960008230A /* WordGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF64085028EA09960008230A /* WordGameTests.swift */; };
 		BF64085B28EA09960008230A /* WordGameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF64085A28EA09960008230A /* WordGameUITests.swift */; };
 		BF64085D28EA09960008230A /* WordGameUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF64085C28EA09960008230A /* WordGameUITestsLaunchTests.swift */; };
 		BF64086F28EA0D860008230A /* FileError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF64086B28EA0D860008230A /* FileError.swift */; };
@@ -36,6 +35,9 @@
 		BFC2F5FC28EC43FC0047E66B /* RestartDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC2F5FB28EC43FC0047E66B /* RestartDisplayable.swift */; };
 		BFC2F5FE28EC4E790047E66B /* TimerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC2F5FD28EC4E790047E66B /* TimerService.swift */; };
 		BFC2F60228EC73B10047E66B /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC2F60128EC73B10047E66B /* UIViewController+Extensions.swift */; };
+		BFC2F60428ECA2560047E66B /* DecodableParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC2F60328ECA2560047E66B /* DecodableParserTests.swift */; };
+		BFC2F60628ECA4BA0047E66B /* TimerServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC2F60528ECA4BA0047E66B /* TimerServiceTests.swift */; };
+		BFC2F60828ECAA980047E66B /* WordPairGeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC2F60728ECAA970047E66B /* WordPairGeneratorTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,7 +65,6 @@
 		BF64084528EA09960008230A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BF64084728EA09960008230A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF64084C28EA09960008230A /* WordGameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WordGameTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BF64085028EA09960008230A /* WordGameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordGameTests.swift; sourceTree = "<group>"; };
 		BF64085628EA09960008230A /* WordGameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WordGameUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF64085A28EA09960008230A /* WordGameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordGameUITests.swift; sourceTree = "<group>"; };
 		BF64085C28EA09960008230A /* WordGameUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordGameUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -88,6 +89,9 @@
 		BFC2F5FB28EC43FC0047E66B /* RestartDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestartDisplayable.swift; sourceTree = "<group>"; };
 		BFC2F5FD28EC4E790047E66B /* TimerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerService.swift; sourceTree = "<group>"; };
 		BFC2F60128EC73B10047E66B /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
+		BFC2F60328ECA2560047E66B /* DecodableParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodableParserTests.swift; sourceTree = "<group>"; };
+		BFC2F60528ECA4BA0047E66B /* TimerServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerServiceTests.swift; sourceTree = "<group>"; };
+		BFC2F60728ECAA970047E66B /* WordPairGeneratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordPairGeneratorTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,10 +143,10 @@
 		BF64083828EA09930008230A /* WordGame */ = {
 			isa = PBXGroup;
 			children = (
-				BFC2F5FF28EC73A00047E66B /* Extensions */,
 				BF64083928EA09930008230A /* AppDelegate.swift */,
 				BF64087328EA0E510008230A /* Assets */,
 				BF64086A28EA0D5F0008230A /* Core */,
+				BFC2F5FF28EC73A00047E66B /* Extensions */,
 				BF64087428EA0E9D0008230A /* Features */,
 				BFBFA07228EB8C3600F018D8 /* UIComp */,
 			);
@@ -152,7 +156,9 @@
 		BF64084F28EA09960008230A /* WordGameTests */ = {
 			isa = PBXGroup;
 			children = (
-				BF64085028EA09960008230A /* WordGameTests.swift */,
+				BFC2F60328ECA2560047E66B /* DecodableParserTests.swift */,
+				BFC2F60528ECA4BA0047E66B /* TimerServiceTests.swift */,
+				BFC2F60728ECAA970047E66B /* WordPairGeneratorTests.swift */,
 			);
 			path = WordGameTests;
 			sourceTree = "<group>";
@@ -464,7 +470,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF64085128EA09960008230A /* WordGameTests.swift in Sources */,
+				BFC2F60428ECA2560047E66B /* DecodableParserTests.swift in Sources */,
+				BFC2F60628ECA4BA0047E66B /* TimerServiceTests.swift in Sources */,
+				BFC2F60828ECAA980047E66B /* WordPairGeneratorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

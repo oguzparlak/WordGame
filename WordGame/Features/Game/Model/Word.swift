@@ -7,12 +7,16 @@
 
 import Foundation
 
-public struct Word: Decodable {
+public struct Word: Decodable, Equatable {
   public let englishTranslation: String
   public let spanishTranslation: String
   
   enum CodingKeys: String, CodingKey {
     case englishTranslation = "text_eng"
     case spanishTranslation = "text_spa"
+  }
+  
+  public static func == (lhs: Word, rhs: Word) -> Bool {
+    return lhs.englishTranslation == rhs.englishTranslation
   }
 }
