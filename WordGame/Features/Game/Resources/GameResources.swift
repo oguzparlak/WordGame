@@ -14,6 +14,10 @@ public struct GameResources {
     public static let wrong = "Wrong"
     public static let correctAttemptText = "Correct Attempts"
     public static let wrongAttemptText = "Wrong Attempts"
+    public static let gameEndTitle = "Game Ended"
+    public static let restartPrompt = "Would you like to restart?"
+    public static let exit = "Exit"
+    public static let restart = "Restart"
   }
   
 }

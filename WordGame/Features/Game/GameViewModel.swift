@@ -8,12 +8,29 @@
 import Foundation
 
 public protocol GameViewModelProtocol {
+  var gameState: GameState { get }
+  var gameStateChangeHandler: ((GameState) -> Void)? { get set }
   func setup(errorHandler: ((String) -> Void)?)
+  func start()
+  func didSelectAttempt(isCorrect: Bool)
 }
 
 public final class GameViewModel: GameViewModelProtocol {
   
   // MARK: - Variables
+  
+  public private(set) var gameState: GameState = .initial {
+    didSet {
+      gameStateChangeHandler?(gameState)
+    }
+  }
+  public var gameStateChangeHandler: ((GameState) -> Void)?
+  
+  private var currentlyDisplayedPair: WordPair? {
+    return gameManager.wordPairs.first
+  }
+  
+  // MARK: - Injected Variables
   
   private let gameManager: GameManager
   
@@ -31,5 +48,67 @@ public final class GameViewModel: GameViewModelProtocol {
     } catch {
       errorHandler?(error.localizedDescription)
     }
+  }
+  
+  public func start() {
+    gameManager.observeSeconds(didEndHandler: { [weak self] in
+      self?.gameManager.onAttempt(isCorrect: false)
+      self?.next()
+    })
+    gameManager.reset()
+    finishRound()
+    displayCurrent()
+  }
+  
+  public func didSelectAttempt(isCorrect: Bool) {
+    pickAttempt(isCorrect: isCorrect)
+    next()
+  }
+}
+
+// MARK: - Private
+
+private extension GameViewModel {
+  
+  func next() {
+    skip()
+    displayCurrent()
+    gameManager.resetTimer()
+    finishRound()
+    checkGameEnded()
+  }
+  
+  func displayCurrent() {
+    guard let currentPair = currentlyDisplayedPair else { return }
+    let viewModel = WordPairView.ViewModel()
+    viewModel.originalText = currentPair.originalWord
+    viewModel.translatedText = currentPair.spanishTranslation
+    gameState = .next(wordPairViewModel: viewModel)
+  }
+  
+  func skip() {
+    guard gameManager.wordPairs.isEmpty == false else { return }
+    gameManager.wordPairs.removeFirst()
+  }
+  
+  func pickAttempt(isCorrect: Bool) {
+    guard let currentPair = currentlyDisplayedPair else { return }
+    let isCorrectAttempt = isCorrect == currentPair.isCorrectTranslation
+    gameManager.onAttempt(isCorrect: isCorrectAttempt)
+    finishRound()
+  }
+  
+  func finishRound() {
+    gameState = .roundFinished(
+      correctAttemptCount: gameManager.correctAttemps,
+      wrongAttemptCount: gameManager.incorrectAttempts
+    )
+  }
+  
+  func checkGameEnded() {
+    let gameEnded = gameManager.isGameEnded()
+    guard gameEnded else { return }
+    gameState = .gameFinished
+    gameManager.stopTimer()
   }
 }

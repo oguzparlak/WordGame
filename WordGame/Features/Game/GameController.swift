@@ -7,7 +7,7 @@
 
 import UIKit
 
-public final class GameController: UIViewController {
+public final class GameController: UIViewController, RestartDisplayable {
   
   // MARK: - Views
   
@@ -16,11 +16,11 @@ public final class GameController: UIViewController {
     let viewModel = HorizontalButtonPairView.ViewModel()
     viewModel.positiveButtonText = GameResources.String.correct
     viewModel.negativeButtonText = GameResources.String.wrong
-    viewModel.positiveButtonTapHandler = {
-      
+    viewModel.positiveButtonTapHandler = { [weak self] in
+      self?.viewModel?.didSelectAttempt(isCorrect: true)
     }
-    viewModel.negativeButtonTapHandler = {
-      
+    viewModel.negativeButtonTapHandler = { [weak self] in
+      self?.viewModel?.didSelectAttempt(isCorrect: false)
     }
     buttonPairView.configure(with: viewModel)
     return buttonPairView
@@ -40,9 +40,8 @@ public final class GameController: UIViewController {
     super.viewDidLoad()
     initialize()
     configureAttemptView()
-    viewModel?.setup(errorHandler: { errorMessage in
-      debugPrint(errorMessage)
-    })
+    bindGameState()
+    start()
   }
   
   // MARK: - Methods
@@ -54,6 +53,36 @@ public final class GameController: UIViewController {
     viewModel.correctAttemptText = GameResources.String.correctAttemptText
     viewModel.incorrectAttemptText = GameResources.String.wrongAttemptText
     attemptView.configure(with: viewModel)
+  }
+  
+  private func bindGameState() {
+    viewModel?.gameStateChangeHandler = { [weak self] state in
+      guard let self = self else { return }
+      switch state {
+      case .initial:
+        break
+      case .next(let wordPairViewModel):
+        self.wordPairView.configure(with: wordPairViewModel)
+      case .gameFinished:
+        self.displayRestartAlert(onRestart: {
+          self.start()
+        }, onExit: {
+          exit(.zero)
+        })
+      case .roundFinished(let correctAttemptCount, let wrongAttemptCount):
+        self.configureAttemptView(
+          correctCount: correctAttemptCount,
+          incorrectCount: wrongAttemptCount
+        )
+      }
+    }
+  }
+  
+  private func start() {
+    viewModel?.setup(errorHandler: { errorMessage in
+      debugPrint(errorMessage)
+    })
+    viewModel?.start()
   }
   
   // MARK: - Init
@@ -97,5 +126,4 @@ private extension GameController {
       $0.centerX.centerY.equalToSuperview()
     }
   }
-  
 }
