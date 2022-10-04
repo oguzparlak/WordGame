@@ -25,6 +25,8 @@ public final class GameController: UIViewController {
     buttonPairView.configure(with: viewModel)
     return buttonPairView
   }()
+  
+  private lazy var attemptView = AttemptView()
 
   // MARK: - Variables
   
@@ -35,9 +37,21 @@ public final class GameController: UIViewController {
   public override func viewDidLoad() {
     super.viewDidLoad()
     initialize()
+    configureAttemptView()
     viewModel?.setup(errorHandler: { errorMessage in
       debugPrint(errorMessage)
     })
+  }
+  
+  // MARK: - Methods
+  
+  private func configureAttemptView(correctCount: Int = .zero, incorrectCount: Int = .zero) {
+    let viewModel = AttemptView.ViewModel()
+    viewModel.correctAttemptCount = correctCount
+    viewModel.incorrectAttemptCount = incorrectCount
+    viewModel.correctAttemptText = GameResources.String.correctAttemptText
+    viewModel.incorrectAttemptText = GameResources.String.wrongAttemptText
+    attemptView.configure(with: viewModel)
   }
   
   // MARK: - Init
@@ -54,21 +68,27 @@ public final class GameController: UIViewController {
   public required init?(coder: NSCoder) {
     super.init(coder: coder)
   }
-  
-  // MARK: - Methods
-  
 }
 
-// MARK: - Private
+// MARK: - View Setup
 
 private extension GameController {
   
   func initialize() {
     view.backgroundColor = .white
     view.addSubview(buttonPairView)
+    view.addSubview(attemptView)
+    makeConstraints()
+  }
+  
+  func makeConstraints() {
     buttonPairView.snp.makeConstraints {
       $0.leading.trailing.equalToSuperview()
       $0.bottom.equalTo(view.safeAreaLayoutGuide).offset(-16)
+    }
+    attemptView.snp.makeConstraints {
+      $0.top.equalTo(view.safeAreaLayoutGuide).offset(16)
+      $0.trailing.equalToSuperview().offset(-16)
     }
   }
   
